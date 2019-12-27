@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Viewstl Javascript Plugin - Animation Example</title>
+    </head>
+        <script>
+	function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+function getUrlParam(parameter, defaultvalue){
+    var urlparameter = defaultvalue;
+    if(window.location.href.indexOf(parameter) > -1){
+        urlparameter = getUrlVars()[parameter];
+        }
+    return urlparameter;
+}
+
+	</script> 
+    <body>
+        <div id="stl_cont" style="width:80%;height:500px;margin:0 auto;"></div>
+
+        <script src="stl_viewer.min.js"></script>        
+        <script>
+		
+		//var link = getUrlVars()["url"];
+		var link = getUrlParam('url','');
+		document.write(link);
+		link="https://www.dropbox.com/s/yqt62hxz39xkqb4/turbine.stl?dl=1";
+            var stl_viewer=new StlViewer
+            (
+                document.getElementById("stl_cont"),
+                {
+                    zoom:1500,
+                    bgcolor:"cyan",
+                    models:
+                    [
+                        {filename:link, color:"#0012ff", display:"smooth", rotationx:0, rotationy:0, rotationz:0, animation:{delta:{rotationz:1, msec:700, loop:true}}},
+                        {filename:link, color:"#FF1212", animation:{delta:{rotationx:1, rotationy:1.1, rotationz:1.2, msec:1000, loop:true}, exact:{x:800, y:150, z:200, scale:3, msec:3000}}}
+                    ]
+                }
+            );
+        </script>
+        
+    </body>
+</html>

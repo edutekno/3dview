@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Viewstl Javascript Plugin - User file</title>
+    </head>
+
+    <style>
+        body {text-align:center;}
+    </style>
+
+    <script>
+    </script>
+
+    <body>
+        <div id="stl_cont" style="width:80%;height:500px;margin:0 auto;"></div>
+        
+        <script src="stl_viewer.min.js"></script>
+            
+        <script>
+            var stl_viewer=new StlViewer ( document.getElementById("stl_cont"),  {
+                    zoom:80,
+                    bgcolor:"#DEF2F3",
+					allow_drag_and_drop:"true",
+					auto_rotate:"true"
+	
+					} );
+        </script>
+        
+        <input type="file" onchange='stl_viewer.add_model({local_file:this.files[0]});stl_viewer.add_model({color:"red"});' accept="*.stl">
+        
+    </body>
+</html>
