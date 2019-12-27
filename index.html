@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Viewstl Javascript Plugin - Simple Example</title>
+        <title>Viewstl Javascript Plugin - User file</title>
     </head>
 
-    <body>
-        <div id="stl_cont" style="width:500px;height:500px;margin:0 auto;"></div>
+    <style>
+        body {text-align:center;}
+    </style>
 
-        <script src="stl_viewer.min.js"></script>        
+    <script>
+    </script>
+
+    <body>
+        <div id="stl_cont" style="width:80%;height:550px;margin:0 auto;"></div>
+        
+        <script src="stl_viewer.min.js"></script>
+            
         <script>
-            var stl_viewer=new StlViewer
-            (
-                document.getElementById("stl_cont"),
-                {
-                    models:
-                    [
-                        {filename:"turbine.stl"}
-                    ]
-                }
-            );
+            var stl_viewer=new StlViewer ( document.getElementById("stl_cont"),  {
+                    zoom:100,
+                    bgcolor:"#ECFEFF",
+					allow_drag_and_drop:"true",
+					auto_rotate:"true"
+	
+					} );
+					stl_viewer.set_color(2, "#0000FF");
         </script>
+        
+        <input type="file" onchange="stl_viewer.add_models({id:2,local_file:this.files[0]});stl_viewer.set_color(2, 'red');" accept="*.stl">
         
     </body>
 </html>
